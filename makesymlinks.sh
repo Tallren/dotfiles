@@ -7,8 +7,11 @@
 ########## Variables
 
 dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="kitty neofetch nvim thfuck"    # list of files/folders to symlink in homedir
+oldFilesDir=~/dotfiles_old             # old dotfiles backup directory
+oldConfigsDir=~/config_old
+files=".p10k.zsh"    # list of files/folders to symlink in homedir
+configdirs="kitty neofetch nvim thefuck"  
+
 
 ##########
 
@@ -22,10 +25,20 @@ echo -n "Changing to the $dir directory ..."
 cd $dir
 echo "done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the configdir to any files in the ~/dotfiles directory specified in $configdirs
+for configdir in $configdirs; do
+    echo "Moving any existing config dirs from ~ to $oldConfigsDir"
+    mv ~/.config/$configdir $oldConfigsDir
+    echo "Creating symlink to $configdir in config directory."
+    ln -s $dir/$configdir ~/.config/$configdir
+done
+
+
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the configdir to any files in the ~/dotfiles directory specified in $configdirs
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    echo "Moving any existing dotfiles from ~ to $oldFilesDir"
+    mv ~/$file $oldFilesDir
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
 done
+
