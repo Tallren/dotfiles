@@ -10,7 +10,7 @@ dir=~/dotfiles                    # dotfiles directory
 oldFilesDir=~/dotfiles_old             # old dotfiles backup directory
 oldConfigsDir=~/config_old
 files=".p10k.zsh"    # list of files/folders to symlink in homedir
-configdirs="kitty neofetch nvim thefuck"  
+configdirs="kitty neofetch nvim sketchybar borders"  
 
 
 ##########
