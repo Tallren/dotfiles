@@ -24,8 +24,8 @@ default=(
   padding_right=5
   icon.font="Hack Nerd Font:Bold:17.0"
   label.font="Hack Nerd Font:Bold:14.0"
-  icon.color=0xff000000
-  label.color=0xff000000
+  icon.color=0xffebdbb2
+  label.color=0xffebdbb2
   icon.padding_left=4
   icon.padding_right=4
   label.padding_left=4
@@ -63,6 +63,7 @@ sketchybar --default "${default[@]}"
 
 sketchybar --add item battery left \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+	   icon.color=0xffd79921
            --subscribe battery system_woke power_source_change
 
 ##### Adding Center Items #####
@@ -85,30 +86,39 @@ sketchybar --add item front_app center \
 # https://felixkratz.github.io/SketchyBar/config/events
 
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh"
+           --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
+	   icon.color=0xff83a598
 
 #####Adding brackets (separate lil sections)#####
-bracket_background_color=0xffb8bb26
+bracket_background_color=0xff282828
+bracket_border_color=0xffb8bb26
 
 sketchybar --add bracket left.section \
 	battery \
 	--set left.section background.color="${bracket_background_color}" \
 	background.height=20 \
-	background.corner_radius=4
+	background.corner_radius=4 \
+	border.color="${bracket_border_color}" \
+	background.border_color="${bracket_border_color}" \
+	background.border_width=2
+
 
 sketchybar --add bracket right.section \
 	clock \
 	--set right.section background.color="${bracket_background_color}" \
 	background.height=20 \
-	background.corner_radius=4
+	background.corner_radius=4 \
+	border.color="${bracket_border_color}" \
+	background.border_color="${bracket_border_color}" \
+	background.border_width=2
 
 sketchybar --add bracket center.section \
 	front_app \
 	--set center.section background.color="${bracket_background_color}" \
 	background.height=20 \
-	background.corner_radius=4
-
-
+	background.corner_radius=4 \
+	background.border_color="${bracket_border_color}" \
+	background.border_width=2
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
