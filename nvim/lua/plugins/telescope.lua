@@ -3,7 +3,7 @@ return {
 	keys = {
 		{ "<leader>pf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
 		{ "<C-p>", "<cmd>Telescope git_files<cr>", desc = "Find Git Files" },
-		{ "<leader>pt", "<cmd>Telescope grep_string<cr>", desc = "Find Text" },
+		{ "<leader>pt", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
 		{
 		  "<leader>fp",
 		  function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ")}) end,
