@@ -1,5 +1,3 @@
-#!/bin/bash
-############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 ############################
@@ -9,7 +7,7 @@
 dir=~/dotfiles                    # dotfiles directory
 oldFilesDir=~/dotfiles_old             # old dotfiles backup directory
 oldConfigsDir=~/config_old
-files=".p10k.zsh"    # list of files/folders to symlink in homedir
+files=".p10k.zsh .zshrc"    # list of files/folders to symlink in homedir
 configDirs="kitty neofetch nvim sketchybar borders"  
 
 
