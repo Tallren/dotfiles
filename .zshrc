@@ -1,4 +1,4 @@
-source ~/.zshrq
+source ~/.zshrq 2> /dev/null
 
 # vi mode
 bindkey -v
