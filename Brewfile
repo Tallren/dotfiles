@@ -91,7 +91,6 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-history-substring-search"
 brew "zsh-syntax-highlighting"
-brew "zsh-vi-mode"
 brew "datawire/blackbird/telepresence", link: false
 brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"

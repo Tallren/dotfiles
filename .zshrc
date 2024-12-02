@@ -13,10 +13,10 @@ fi
 
 #zsh-syntax-highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/zshplugins/colored-man-pages.plugin.zsh
+#colored man pages
+source ~/.zshplugins/colored-man-pages.plugin.zsh
 #history substring search
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-#source $(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit -u && compinit
@@ -35,8 +35,8 @@ export ZVM_VI_ESCAPE_BINDKEY=jh
 export GRADLE_USER_HOME=$HOME/.gradle
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
 export PATH=~/go/bin:$PATH
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -46,7 +46,6 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 alias gc="git commit -am"
 alias gd="git diff"
 alias gs="git status"
-alias gm="git merge"
 alias gmm="git merge master"
 alias gco="git checkout"
 alias gpull="git pull"

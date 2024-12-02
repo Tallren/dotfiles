@@ -4,7 +4,7 @@ require("mason-lspconfig").setup({
       "clangd",
       "lua_ls",
       "pyright",
-      "tsserver",
+      "ts_ls",
       "yamlls",
       "marksman",
       "jsonls",
@@ -14,7 +14,13 @@ require("mason-lspconfig").setup({
     },
     handlers = {
     function(server_name)
-    require("lspconfig")[server_name].setup({})
+        if server_name == 'tsserver' then
+            server_name = 'ts_ls'
+        end
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        require("lspconfig")[server_name].setup({
+            capabilies = capabilities
+        })
     end,
     },
 })
