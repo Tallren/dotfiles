@@ -10,9 +10,17 @@ lsp_zero.on_attach(function(client, bufnr)
       "FileType", {
       pattern={"qf"},
       command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>]]})
+    -- Opens error in floating window
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
+
 end)
 
 cmp.setup({
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
     mapping = cmp.mapping.preset.insert({
         ['<Enter>'] = cmp.mapping.confirm({select = true}),
 
