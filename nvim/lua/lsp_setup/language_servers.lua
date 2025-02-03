@@ -22,6 +22,13 @@ require("mason-lspconfig").setup({
             capabilies = capabilities
         })
     end,
+
+    ts_ls = function()
+        require('lspconfig').ts_ls.setup({
+            on_attach = function (client, bufnr)
+            end
+        })
+    end
     },
 })
 
