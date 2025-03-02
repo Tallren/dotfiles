@@ -13,8 +13,6 @@ fi
 
 #zsh-syntax-highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#colored man pages
-source ~/.zshplugins/colored-man-pages.plugin.zsh
 #history substring search
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
