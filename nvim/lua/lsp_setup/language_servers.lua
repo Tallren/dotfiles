@@ -10,7 +10,8 @@ require("mason-lspconfig").setup({
       "jsonls",
       "html",
       "cssls",
-      "bashls"
+      "bashls",
+      "helm_ls"
     },
     handlers = {
     function(server_name)

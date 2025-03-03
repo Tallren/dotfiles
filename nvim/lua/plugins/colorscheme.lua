@@ -1,7 +1,7 @@
 return {
   -- add gruvbox
-  { 
-  "ellisonleao/gruvbox.nvim", 
+  {
+  "ellisonleao/gruvbox.nvim",
   lazy = false,
   priority = 1000,
   config = function()
