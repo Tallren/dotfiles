@@ -31,7 +31,6 @@ bindkey '^[[B' history-substring-search-down
 # env
 export ZVM_VI_ESCAPE_BINDKEY=jh
 export GRADLE_USER_HOME=$HOME/.gradle
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
 export PATH=~/go/bin:$PATH
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
