@@ -61,7 +61,7 @@ sketchybar --default "${default[@]}"
 # We add some regular items to the left side of the bar, where
 # only the properties deviating from the current defaults need to be set
 
-sketchybar --add item battery left \
+sketchybar --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
 	   icon.color=0xffd79921
            --subscribe battery system_woke power_source_change
@@ -70,7 +70,7 @@ sketchybar --add item battery left \
 # We add some regular items to the center side of the bar, where
 # only the properties deviating from the current defaults need to be set
 
-sketchybar --add item front_app center \
+sketchybar --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
@@ -93,18 +93,8 @@ sketchybar --add item clock right \
 bracket_background_color=0xff282828
 bracket_border_color=0xffb8bb26
 
-sketchybar --add bracket left.section \
-	battery \
-	--set left.section background.color="${bracket_background_color}" \
-	background.height=20 \
-	background.corner_radius=4 \
-	border.color="${bracket_border_color}" \
-	background.border_color="${bracket_border_color}" \
-	background.border_width=2
-
-
 sketchybar --add bracket right.section \
-	clock \
+	battery clock \
 	--set right.section background.color="${bracket_background_color}" \
 	background.height=20 \
 	background.corner_radius=4 \
