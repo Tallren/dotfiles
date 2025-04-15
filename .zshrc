@@ -23,7 +23,7 @@ autoload -Uz compinit -u && compinit
 #Allow ctrl-x ctrl-e opening current command in vim
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 #Up and down arrow keys search history substring
 bindkey '^[[A' history-substring-search-up
