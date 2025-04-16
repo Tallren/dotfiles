@@ -91,7 +91,7 @@ sketchybar --add item clock right \
 
 #####Adding brackets (separate lil sections)#####
 bracket_background_color=0xff282828
-bracket_border_color=0xffb8bb26
+bracket_border_color=0xff709080
 
 sketchybar --add bracket right.section \
 	battery clock \
