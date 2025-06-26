@@ -1,9 +1,17 @@
 source ~/.zshrq 2> /dev/null
 source ~/.zshhome 2> /dev/null
 
+
+export EMBARRASSING_FACT_ABOUT_ME="eW91IGhhdmUgYmVlbiByZXBvcnRlZCB0byB0aGUgRkJJCg=="
+
 # vi mode
 bindkey -v
 bindkey jh vi-cmd-mode
+
+#python
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
