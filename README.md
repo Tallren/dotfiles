@@ -1,12 +1,10 @@
-Clone this to your home dir
+<h3>Install</h3>
 
-Move configuration folders and files with `sh scripts/makesymlinks.sh`
+1. Clone this to your home dir
 
-Install Homebrew packages `brew bundle --file Brewfile`
+2. run `sh scripts/setup.sh`
 
-Run Homebrew services and set them to run at system startup `sh scripts/startservices.sh`
+<h3>Requirements</h3>
 
-Adjust Rectangle y margin to account for Sketchybar `sh scripts/adjustrectangleygap.sh`
-
-Do all of the above `sh scripts/setup.sh`
+- Homebrew
 
