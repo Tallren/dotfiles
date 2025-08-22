@@ -63,7 +63,7 @@ sketchybar --default "${default[@]}"
 
 sketchybar --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-	   icon.color=0xffd79921
+	   icon.color=0xfff9e2af
            --subscribe battery system_woke power_source_change
 
 ##### Adding Center Items #####
@@ -87,11 +87,11 @@ sketchybar --add item front_app left \
 
 sketchybar --add item clock right \
            --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
-	   icon.color=0xff83a598
+	   icon.color=0xffa6e3a1
 
 #####Adding brackets (separate lil sections)#####
 bracket_background_color=0xff282828
-bracket_border_color=0xff709080
+bracket_border_color=0xffb4befe
 
 sketchybar --add bracket right.section \
 	battery clock \
