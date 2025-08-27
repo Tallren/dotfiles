@@ -1,7 +1,7 @@
 require('scripts')
 require('lazy').setup('plugins')
 require('lsp_setup')
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "catppuccin-frappe"
 vim.wo.number = true
 vim.wo.wrap = false
 vim.wo.relativenumber = true
