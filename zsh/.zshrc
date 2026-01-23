@@ -88,7 +88,7 @@ alias vim="nvim"
 alias v="nvim"
 
 #weather
-alias weather="curl wttr.in/Tampa"
+alias weather="curl \"wttr.in/Tampa?u\""
 alias moon="curl wttr.in/Moon"
 
 #zoxide
