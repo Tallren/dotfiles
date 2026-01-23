@@ -89,6 +89,7 @@ alias v="nvim"
 
 #weather
 alias weather="curl wttr.in/Tampa"
+alias moon="curl wttr.in/Moon"
 
 #zoxide
 eval "$(zoxide init zsh)"
