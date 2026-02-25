@@ -94,3 +94,6 @@ alias moon="curl wttr.in/Moon"
 #zoxide
 eval "$(zoxide init zsh)"
 alias cd="z"
+
+#claude
+export PATH="$HOME/.local/bin:$PATH"

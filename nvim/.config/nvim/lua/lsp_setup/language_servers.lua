@@ -11,7 +11,8 @@ require("mason-lspconfig").setup({
       "html",
       "cssls",
       "bashls",
-      "helm_ls"
+      "helm_ls",
+      "jdtls"
     },
     handlers = {
     function(server_name)
@@ -20,7 +21,7 @@ require("mason-lspconfig").setup({
         end
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         require("lspconfig")[server_name].setup({
-            capabilies = capabilities
+            capabilities = capabilities
         })
     end,
 
@@ -29,6 +30,9 @@ require("mason-lspconfig").setup({
             on_attach = function (client, bufnr)
             end
         })
+    end,
+    jdtls = function()
+        -- Skipping auto-setup, configured separately in ftplugin/java.lua
     end
     },
 })
