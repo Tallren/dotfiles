@@ -24,6 +24,10 @@ fi
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #history substring search
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+#auto-suggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#powerline
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit -u && compinit
@@ -41,8 +45,6 @@ bindkey '^[[B' history-substring-search-down
 export ZVM_VI_ESCAPE_BINDKEY=jh
 export GRADLE_USER_HOME=$HOME/.gradle
 export PATH=~/go/bin:$PATH
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -91,9 +93,6 @@ alias v="nvim"
 alias weather="curl \"wttr.in/Tampa?u\""
 alias moon="curl wttr.in/Moon"
 
-#zoxide
+#zoxide (must be at the end of the shel config)
 eval "$(zoxide init zsh)"
 alias cd="z"
-
-#claude
-export PATH="$HOME/.local/bin:$PATH"
