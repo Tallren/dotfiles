@@ -12,7 +12,8 @@ require("mason-lspconfig").setup({
       "cssls",
       "bashls",
       "helm_ls",
-      "jdtls"
+      "jdtls",
+      "rust_analyzer"
     },
     handlers = {
     function(server_name)
