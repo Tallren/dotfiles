@@ -2,7 +2,8 @@ return {
     { 'rust-lang/rust.vim' },
     {
         'mrcjkb/rustaceanvim',
-        ft = { 'rust' }, -- Automatically load the plugin for Rust files
+        ft = { 'rust' },
+        -- Let nvim-dap.lua handle the adapter configuration
     },
 }
 

@@ -1,23 +1,23 @@
 return {
   "jay-babu/mason-nvim-dap.nvim",
   dependencies = "mason.nvim",
-  cmd = { "DapInstall", "DapUninstall" },
   opts = {
-    -- Makes a best effort to setup the various debuggers with
-    -- reasonable debug configurations
     automatic_installation = true,
 
-    -- You can provide additional configuration to the handlers,
-    -- see mason-nvim-dap README for more information
-    handlers = {},
-
-    -- You'll need to check that you have the required things installed
-    -- online, please don't ask me how to install them :)
-    ensure_installed = {
-      -- Update this to ensure that you have the debuggers for the langs you want
-      'js'
+    -- Skip codelldb since we configure it manually in nvim-dap.lua
+    handlers = {
+      function(config)
+        -- Default handler - auto-setup all adapters
+        require('mason-nvim-dap').default_setup(config)
+      end,
+      codelldb = function(config)
+        -- Skip codelldb - we configure it manually
+      end,
     },
-  },
-  -- mason-nvim-dap is loaded when nvim-dap loads
-  config = function() end,
+
+    ensure_installed = {
+      'js',
+      'codelldb', -- Install it but don't auto-configure
+    },
+  }
 }

@@ -35,6 +35,34 @@ return {
   },
 
   config = function()
-    -- load mason-nvim-dap here, after all adapters have been setup
+    local dap = require("dap")
+
+    -- Setup codelldb adapter for Rust
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = "${port}",
+      executable = {
+        command = vim.fn.stdpath("data") .. '/mason/bin/codelldb',
+        args = {
+          "--port", "${port}",
+          "--liblldb", vim.fn.stdpath("data") .. '/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib'
+        },
+      }
+    }
+
+    -- Setup Rust debug configurations
+    dap.configurations.rust = {
+      {
+        name = "Launch",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+      },
+    }
   end,
 }
