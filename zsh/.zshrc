@@ -1,6 +1,7 @@
 source ~/.zshrq 2> /dev/null
 source ~/.zshhome 2> /dev/null
 
+export PATH="$HOME/.local/bin:$PATH"
 
 export EMBARRASSING_FACT_ABOUT_ME="eW91IGhhdmUgYmVlbiByZXBvcnRlZCB0byB0aGUgRkJJCg=="
 

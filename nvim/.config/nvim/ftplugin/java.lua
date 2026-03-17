@@ -64,7 +64,37 @@ local config = {
       bundles = { home .. "/.local/share/java/lombok-1.18.42.jar" },
       extendedClientCapabilities = { classFileContentsSupport = true },
     },
-    flags = { debounce_text_changes = 150 }
+    flags = { debounce_text_changes = 150 },
+    handlers = {
+        ["textDocument/definition"] = function(err, result, ctx, config_)
+            -- Use default handler wrapped in pcall to catch cursor errors
+            local ok, error_msg = pcall(vim.lsp.handlers["textDocument/definition"], err, result, ctx, config_)
+
+            if not ok and error_msg:match("Cursor position outside buffer") then
+                -- Buffer content from decompiled source not fully loaded yet
+                -- Wait and retry with bounds checking
+                vim.defer_fn(function()
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local line_count = vim.api.nvim_buf_line_count(bufnr)
+
+                    if result then
+                        local location = vim.islist(result) and result[1] or result
+                        if location and location.range then
+                            local row = math.min(location.range.start.line + 1, line_count)
+                            local col = location.range.start.character
+
+                            if row >= 1 and row <= line_count then
+                                pcall(vim.api.nvim_win_set_cursor, 0, {row, col})
+                            end
+                        end
+                    end
+                end, 150)
+            elseif not ok then
+                -- Some other error occurred
+                vim.notify("Go to definition error: " .. tostring(error_msg), vim.log.levels.ERROR)
+            end
+        end,
+    }
 }
 
 vim.lsp.start(config)
