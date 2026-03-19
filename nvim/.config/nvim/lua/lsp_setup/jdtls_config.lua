@@ -10,7 +10,7 @@ require("lspconfig").jdtls.setup({
             home = java_home,
             jdt = { ls = { lombokSupport = { enabled = true } } },
             configuration = {
-                runtimes = { { name = "Temurin-17.0.14+7", path = java_home } },
+                runtimes = { { name = "JavaSE-17", path = java_home } },
                 updateBuildConfiguration = "interactive",
             },
             eclipse = { downloadSources = true },
