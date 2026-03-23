@@ -7,11 +7,21 @@ return {
       "MunifTanjim/nui.nvim",
       "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>'),
+    keys = {
+        { '<C-b>', '<Cmd>Neotree toggle<CR>', desc = 'Toggle Neo-tree' },
+    },
     config = function()
         require("neo-tree").setup({
+            window = {
+                mappings = {
+                    ["<C-b>"] = "close_window",
+                },
+            },
             filesystem = {
-                hijack_netrw_behavior = "disabled"
+                hijack_netrw_behavior = "disabled",
+                follow_current_file = {
+                    enabled = true,
+                },
             }
         })
     end
