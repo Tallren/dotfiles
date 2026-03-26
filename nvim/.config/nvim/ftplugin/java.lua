@@ -110,3 +110,11 @@ local config = {
 
 vim.lsp.start(config)
 
+vim.keymap.set('n', '<leader>ji', function()
+    vim.lsp.buf.execute_command({command = "java.edit.organizeImports", arguments = {vim.uri_from_bufnr(0)}})
+end, { buffer = true, desc = "Organize imports" })
+
+vim.keymap.set('n', '<leader>ju', function()
+    vim.lsp.buf.execute_command({command = "java.project.updateConfiguration"})
+end, { buffer = true, desc = "Refresh Gradle project" })
+
