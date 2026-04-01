@@ -81,6 +81,11 @@ alias findDir='find . -type d -name'
 
 #kitty
 alias icat="kitten icat"
+function chpwd() {
+  printf '\033]2;%s\007' "${PWD##*/}"
+}
+# Initial title
+printf '\033]2;%s\007' "${PWD##*/}"
 
 #lsd
 alias ls='lsd'
