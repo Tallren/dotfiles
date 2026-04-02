@@ -26,3 +26,9 @@ vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
+
+"resize splits
+nnoremap <C-H> <C-W><
+nnoremap <C-L> <C-W>>
+nnoremap <C-K> <C-W>+
+nnoremap <C-J> <C-W>-
