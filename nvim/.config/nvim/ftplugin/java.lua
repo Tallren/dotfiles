@@ -1,3 +1,4 @@
+local jdtls = require('jdtls')
 local home = os.getenv("HOME")
 local java_home = os.getenv("JAVA_HOME")
 
@@ -20,49 +21,7 @@ end
 -- Use Java 21 for jdtls server, but Java 17 for project builds
 local jdtls_java = '/opt/homebrew/opt/openjdk@21/bin/java'
 
--- Handle jdt:// URIs by synchronously loading decompiled content before Neovim
--- tries to position the cursor. Without this, Neovim 0.11's LSP handler sets the
--- cursor before the async content arrives, causing "Cursor position outside buffer".
-vim.api.nvim_create_autocmd("BufReadCmd", {
-    pattern = "jdt://*",
-    callback = function(ev)
-        local buf = ev.buf
-        local uri = ev.match
-        vim.bo[buf].modifiable = true
-        vim.bo[buf].swapfile = false
-        vim.bo[buf].buftype = "nofile"
-        vim.bo[buf].filetype = "java"
-
-        local client = vim.lsp.get_clients({ name = "jdtls" })[1]
-        if not client then
-            vim.wait(5000, function()
-                return vim.lsp.get_clients({ name = "jdtls" })[1] ~= nil
-            end)
-            client = vim.lsp.get_clients({ name = "jdtls" })[1]
-        end
-        if not client then
-            vim.notify("No jdtls client found for jdt:// URI", vim.log.levels.ERROR)
-            return
-        end
-
-        vim.lsp.buf_attach_client(buf, client.id)
-
-        local content
-        client:request("java/classFileContents", { uri = uri }, function(err, result)
-            assert(not err, vim.inspect(err))
-            content = result or ""
-            local lines = vim.split(content:gsub("\r\n", "\n"), "\n", { plain = true })
-            vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-            vim.bo[buf].modifiable = false
-        end, buf)
-
-        -- Block until content is loaded so cursor positioning works
-        vim.wait(5000, function() return content ~= nil end)
-    end,
-})
-
 local config = {
-    name = 'jdtls',
     cmd = {
         jdtls_java,  -- Use Java 21 for jdtls server
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -103,18 +62,19 @@ local config = {
     },
     init_options = {
       bundles = vim.fn.glob(vim.fn.stdpath("config") .. "/jdtls-plugins/dg.jdt.ls.decompiler.*.jar", false, true),
-      extendedClientCapabilities = { classFileContentsSupport = true },
+      extendedClientCapabilities = jdtls.extendedClientCapabilities,
     },
     flags = { debounce_text_changes = 150 },
 }
 
-vim.lsp.start(config)
+jdtls.start_or_attach(config)
 
 vim.keymap.set('n', '<leader>ji', function()
-    vim.lsp.buf.execute_command({command = "java.edit.organizeImports", arguments = {vim.uri_from_bufnr(0)}})
+    require('jdtls').organize_imports()
 end, { buffer = true, desc = "Organize imports" })
 
 vim.keymap.set('n', '<leader>ju', function()
-    vim.lsp.buf.execute_command({command = "java.project.updateConfiguration"})
+    require('jdtls').update_project_config()
 end, { buffer = true, desc = "Refresh Gradle project" })
+
 
