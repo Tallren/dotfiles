@@ -2,9 +2,9 @@ require('scripts')
 require('lazy').setup('plugins')
 require('lsp_setup')
 vim.cmd.colorscheme "catppuccin-frappe"
-vim.wo.number = true
-vim.wo.wrap = false
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.wrap = false
+vim.opt.relativenumber = true
 vim.go.syntax = "on"
 vim.go.tabstop = 4
 vim.go.shiftwidth = 4
@@ -20,4 +20,10 @@ vim.diagnostic.config({
     },
   },
 })
+
+-- Resize splits
+vim.keymap.set('n', '<C-H>', '<C-W><')
+vim.keymap.set('n', '<C-L>', '<C-W>>')
+vim.keymap.set('n', '<C-K>', '<C-W>+')
+vim.keymap.set('n', '<C-J>', '<C-W>-')
 
