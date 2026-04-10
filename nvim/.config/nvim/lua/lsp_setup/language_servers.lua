@@ -60,11 +60,5 @@ require("sonarqube").setup({
             extension_path .. "/analyzers/sonarxml.jar",
         },
     },
-    csharp = {
-        enabled = true,
-        omnisharpDirectory = extension_path .. "/omnisharp",
-        csharpOssPath = extension_path .. "/analyzers/sonarcsharp.jar",
-        csharpEnterprisePath = extension_path .. "/analyzers/csharpenterprise.jar",
-    },
 })
 
