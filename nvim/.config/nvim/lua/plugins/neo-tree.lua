@@ -19,6 +19,8 @@ return {
             },
             filesystem = {
                 hijack_netrw_behavior = "disabled",
+                group_empty_dirs = true,
+                scan_mode = "deep",
                 follow_current_file = {
                     enabled = true,
                 },

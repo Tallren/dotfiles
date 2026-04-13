@@ -13,6 +13,7 @@ lsp_zero.on_attach(function(client, bufnr)
     -- Opens error in floating window
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
+    vim.keymap.set("n", "grr", require("telescope.builtin").lsp_references, bufopts)
 
 end)
 
