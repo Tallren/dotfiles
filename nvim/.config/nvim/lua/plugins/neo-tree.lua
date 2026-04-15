@@ -12,6 +12,12 @@ return {
     },
     config = function()
         require("neo-tree").setup({
+            default_component_configs = {
+                file_size = { enabled = false },
+                last_modified = { enabled = false },
+                type = { enabled = false },
+                created = { enabled = false },
+            },
             window = {
                 mappings = {
                     ["<C-b>"] = "close_window",
