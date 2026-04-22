@@ -19,6 +19,7 @@ return {
         -- normal mode
         map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
         map('n', '<leader>hb', gitsigns.toggle_current_line_blame, { desc = 'toggle git [b]lame line' })
+        map('n', '<leader>gb', gitsigns.blame, { desc = 'toggle git [b]lame line' })
         map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
         map('n', '<leader>hD', function()
           gitsigns.diffthis '@'
